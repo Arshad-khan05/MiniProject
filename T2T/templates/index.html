@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Language Translator</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f8f4; /* Greenish white background */
+}
+
+.header {
+    background-color: #2e8b57; /* Bluish green background color */
+    text-align: center;
+    padding: 100px 0; /* Increased padding */
+}
+
+.header h1 {
+    color: #fff; /* White color for header text */
+    margin: 0;
+    font-size: 36px; /* Increased font size */
+}
+
+.tagline {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.option {
+    margin: 0 30px; /* Increased margin */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px; /* Increased padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transform transition */
+}
+
+.option:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Increased shadow */
+    transform: translateY(-5px); /* Added translateY transform */
+}
+
+.option h2 {
+    color: #000; /* Black color for option headings */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #228b22; /* Green button */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e7e34; /* Darker shade of green on hover */
+}
+</style>
+<body>
+    <div class="header">
+        <h1>Multimodal Language Translator</h1>
+    </div>
+    <div class="container">
+        <div class="options">
+            <div class="option">
+                <h2>Text to Text</h2>
+                <button onclick="redirectToTextToText()">Translate</button>
+            </div>
+            <div class="option">
+                <h2>Voice to Voice</h2>
+                <button >Translate</button>
+            </div>
+            <div class="option">
+                <h2>Image to Voice</h2>
+                <button >Translate</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function redirectToTextToText() {
+        window.location.href = '/text_to_text';
+    }
+</script>
+</html>
