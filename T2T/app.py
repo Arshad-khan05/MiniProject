@@ -32,7 +32,7 @@ def translate():
 
     # Generate audio file
     tts = gTTS(text=translated_text, lang=target_language)
-    audio_file_path = os.path.join('static', 'translated_audio.mp3')  # Use os.path.join for path concatenation
+    audio_file_path = os.path.join('static', 'translated_audio.mp3')
     tts.save(audio_file_path)
 
     return jsonify({'translated_text': translated_text, 'audio_file_path': audio_file_path})
