@@ -26,9 +26,12 @@ def voice_to_voice():
 
 @app.route('/translate', methods=['POST'])
 def translate():
-    transcribed_text = request.form['transcribed_text']
+    if 'transcribed_text' in request.form:
+        text_to_translate = request.form['transcribed_text']
+    else:
+        text_to_translate = request.form['text']
     target_language = request.form['target_language']
-    translated_text = translate_text(transcribed_text, target_language)
+    translated_text = translate_text(text_to_translate, target_language)
 
     # Generate audio file
     tts = gTTS(text=translated_text, lang=target_language)

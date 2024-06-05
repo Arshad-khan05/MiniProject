@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="targetLanguage">Select target language:</label>
                 <select class="form-control" id="targetLanguage" name="target_language">
-                    <option value="kn">Kannada</option> <!-- Add Kannada option -->
+                    <option value="kn">Kannada</option>
                     <option value="te">Telugu</option>
                     <option value="ta">Tamil</option>
                     <option value="ml">Malayalam</option>
@@ -47,7 +47,7 @@
                         $('#translatedText').text(response.translated_text);
                         var audioPlayer = $('#audioPlayer');
                         var audioUrl = '/play_audio?audio_file_path=' + response.audio_file_path + '&timestamp=' + new Date().getTime();
-                        audioPlayer.attr('src', audioUrl); // Set new audio source with timestamp parameter
+                        audioPlayer.attr('src', audioUrl);
                         audioPlayer.show();
                         // audioPlayer[0].play();
                     }
@@ -55,7 +55,5 @@
             });
         });
     </script>
-    
-    
 </body>
 </html>
