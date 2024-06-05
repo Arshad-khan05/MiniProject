@@ -26,9 +26,9 @@ def voice_to_voice():
 
 @app.route('/translate', methods=['POST'])
 def translate():
-    text_to_translate = request.form['text']
+    transcribed_text = request.form['transcribed_text']
     target_language = request.form['target_language']
-    translated_text = translate_text(text_to_translate, target_language)
+    translated_text = translate_text(transcribed_text, target_language)
 
     # Generate audio file
     tts = gTTS(text=translated_text, lang=target_language)
@@ -37,13 +37,12 @@ def translate():
 
     return jsonify({'translated_text': translated_text, 'audio_file_path': audio_file_path})
 
-@app.route('/voice_translate', methods=['POST'])
-def voice_translate():
+@app.route('/transcribe', methods=['POST'])
+def transcribe():
     if 'audio' not in request.files:
         return jsonify({'error': 'No audio file provided'}), 400
 
     audio_file = request.files['audio']
-    target_language = request.form['target_language']
     
     audio_path = os.path.join('static', 'uploaded_audio.wav')
     audio_file.save(audio_path)
@@ -55,17 +54,9 @@ def voice_translate():
     
     with sr.AudioFile(audio_path) as source:
         audio_data = recognizer.record(source)
-        text_to_translate = recognizer.recognize_google(audio_data)
-
-    # Translate text
-    translated_text = translate_text(text_to_translate, target_language)
-
-    # Generate translated audio file
-    tts = gTTS(text=translated_text, lang=target_language)
-    translated_audio_path = os.path.join('static', 'translated_audio.mp3')
-    tts.save(translated_audio_path)
-
-    return jsonify({'translated_text': translated_text, 'audio_file_path': translated_audio_path})
+        text_to_transcribe = recognizer.recognize_google(audio_data)
+    
+    return jsonify({'transcribed_text': text_to_transcribe})
 
 @app.route('/play_audio')
 def play_audio():
