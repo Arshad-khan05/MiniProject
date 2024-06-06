@@ -64,6 +64,9 @@
                         $('#extractedText').text(response.extracted_text);
                         $('#textToTranslate').val(response.extracted_text);
                         $('#extractedTextContainer').show();
+                    },
+                    error: function(error) {
+                        alert('Error processing image');
                     }
                 });
             });
@@ -81,6 +84,10 @@
                         var audioUrl = '/play_audio?audio_file_path=' + response.audio_file_path + '&timestamp=' + new Date().getTime();
                         audioPlayer.attr('src', audioUrl);
                         audioPlayer.show();
+                        $('#translatedTextContainer').show();
+                    },
+                    error: function(error) {
+                        alert('Error translating text');
                     }
                 });
             });
