@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Text Translation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Image to Text Translation</h1>
+        <form id="uploadImageForm">
+            <div class="form-group">
+                <label for="image">Upload image with text:</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Extract Text</button>
+        </form>
+        <div id="imageContainer" class="mt-3" style="display: none;">
+            <h3>Uploaded Image:</h3>
+            <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%;">
+        </div>
+        <div id="extractedTextContainer" class="mt-3" style="display: none;">
+            <h3>Extracted Text:</h3>
+            <p id="extractedText"></p>
+            <form id="translateTextForm">
+                <div class="form-group">
+                    <label for="targetLanguage">Select target language:</label>
+                    <select class="form-control" id="targetLanguage" name="target_language">
+                        <option value="kn">Kannada</option>
+                        <option value="te">Telugu</option>
+                        <option value="ta">Tamil</option>
+                        <option value="ml">Malayalam</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <input type="hidden" id="textToTranslate" name="text">
+                <button type="submit" class="btn btn-primary">Translate</button>
+            </form>
+        </div>
+        <div id="translatedTextContainer" class="mt-3" style="display: none;">
+            <h3>Translated Text:</h3>
+            <p id="translatedText"></p>
+            <audio id="audioPlayer" controls style="display: none;"></audio>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#uploadImageForm').submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/process_image',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        $('#uploadedImage').attr('src', response.image_path);
+                        $('#imageContainer').show();
+                        $('#extractedText').text(response.extracted_text);
+                        $('#textToTranslate').val(response.extracted_text);
+                        $('#extractedTextContainer').show();
+                    }
+                });
+            });
+
+            $('#translateTextForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '/translate_image_text',
+                    data: formData,
+                    success: function(response) {
+                        $('#translatedText').text(response.translated_text);
+                        var audioPlayer = $('#audioPlayer');
+                        var audioUrl = '/play_audio?audio_file_path=' + response.audio_file_path + '&timestamp=' + new Date().getTime();
+                        audioPlayer.attr('src', audioUrl);
+                        audioPlayer.show();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

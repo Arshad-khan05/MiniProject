@@ -66,5 +66,43 @@ def play_audio():
     audio_file_path = request.args.get('audio_file_path')
     return send_file(audio_file_path, as_attachment=True)
 
+
+
+@app.route('/image_to_text')
+def image_to_text():
+    return render_template('image_to_text.html')
+
+@app.route('/process_image', methods=['POST'])
+def process_image():
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image file provided'}), 400
+
+    image_file = request.files['image']
+    image_path = os.path.join('static', image_file.filename)
+    image_file.save(image_path)
+
+    # Use OCR to extract text from the image
+    import pytesseract
+    from PIL import Image
+
+    img = Image.open(image_path)
+    extracted_text = pytesseract.image_to_string(img)
+
+    return jsonify({'extracted_text': extracted_text, 'image_path': image_path})
+
+@app.route('/translate_image_text', methods=['POST'])
+def translate_image_text():
+    text_to_translate = request.form['text']
+    target_language = request.form['target_language']
+    translated_text = translate_text(text_to_translate, target_language)
+
+    # Generate audio file
+    tts = gTTS(text=translated_text, lang=target_language)
+    audio_file_path = os.path.join('static', 'translated_audio.mp3')
+    tts.save(audio_file_path)
+
+    return jsonify({'translated_text': translated_text, 'audio_file_path': audio_file_path})
+
+
 if __name__ == '__main__':
     app.run(debug=True)

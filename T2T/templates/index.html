@@ -92,7 +92,7 @@
             </div>
             <div class="option">
                 <h2>Image to Voice</h2>
-                <button>Translate</button>
+                <button onclick= "redirectToImgToText()">Translate</button>
             </div>
         </div>
     </div>
@@ -104,6 +104,10 @@
 
     function redirectToVoiceToVoice() {
         window.location.href = '/voice_to_voice';
+    }
+
+    function redirectToImgToText() {
+        window.location.href = '/image_to_text';
     }
 </script>
 </html>
