@@ -7,11 +7,19 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    body{
+        background-image: url('/static/images/bg2.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Voice to Voice Translation</h1>
         <form id="uploadForm" enctype="multipart/form-data">
             <div class="form-group">
+                <p>If the input file is not in <b>.wav </b>format : <a href="https://cloudconvert.com/wav-converter">Click here</a> to convert it into  <b>.wav</b> format</p>
                 <label for="audio">Upload audio file:</label>
                 <input type="file" class="form-control" id="audio" name="audio" accept="audio/*">
                 <audio id="uploadedAudioPlayer" controls style="display: none; margin-top: 10px;"></audio>
