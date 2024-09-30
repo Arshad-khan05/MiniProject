@@ -8,6 +8,9 @@ Multimodal language translator allows users to translate text, speech, and image
 - **Voice to Voice Translation**: Upload an audio file, transcribe it to text, and translate it.
 - **Image to Text Translation**: Upload an image, extract text, and translate it.
 
+## High Level Design 
+<img src="Output/Image00.png" alt="Example Image 1" style="width: 100%;">
+
 ## Results
 
 <table>
