@@ -18,18 +18,13 @@ Multimodal language translator allows users to translate text, speech, and image
 - Pydub
 - Pillow (PIL)
 
-Install all the required packages using:
-
-```bash
-pip install Flask googletrans==4.0.0-rc1 gTTS SpeechRecognition pydub pytesseract pillow
-```
-
-
 ## How to Run
 1. Clone the repository.
 
 2. Install the required dependencies.
-
+    ```bash
+    pip install Flask googletrans==4.0.0-rc1 gTTS SpeechRecognition pydub pytesseract pillow
+    ```
 3. Run the Flask app:
 
     ```bash
