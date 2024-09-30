@@ -8,6 +8,26 @@ Multimodal language translator allows users to translate text, speech, and image
 - **Voice to Voice Translation**: Upload an audio file, transcribe it to text, and translate it.
 - **Image to Text Translation**: Upload an image, extract text, and translate it.
 
+## Results
+
+<table>
+    <tr>
+        <td><img src="Output/Image01.png" alt="Example Image 1" style="width: 100%;"></td>
+        <td><img src="Output/Image03.png" alt="Example Image 2" style="width: 100%;"></td>
+    </tr>
+    <tr>
+        <td><img src="Output/Image02.png" alt="Example Image 1" style="width: 100%;"></td>
+        <td><img src="Output/Image04.png" alt="Example Image 2" style="width: 100%;"></td>
+    </tr>
+    <tr>
+        <td><img src="Output/Image05.png" alt="Example Image 1" style="width: 100%;"></td>
+        <td><img src="Output/Image06.png" alt="Example Image 2" style="width: 100%;"></td>
+    </tr>
+</table>
+
+
+
+
 ## Requirements
 - Python 3.x
 - Flask
@@ -43,8 +63,4 @@ Multimodal language translator allows users to translate text, speech, and image
 - **Text to Text**: Enter text, choose the language, and translate.
 - **Voice to Voice**: Upload an audio file, transcribe, and translate.
 - **Image to Text**: Upload an image, extract text, and translate.
-
-
-
-
 
