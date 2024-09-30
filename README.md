@@ -25,7 +25,7 @@ Multimodal language translator allows users to translate text, speech, and image
    ```
 3. Install the required dependencies.
     ```bash
-    pip install Flask googletrans==4.0.0-rc1 gTTS SpeechRecognition pydub pytesseract pillow
+    pip install -r requirements.txt
     ```
 4. Run the Flask app:
 
