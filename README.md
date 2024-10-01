@@ -46,17 +46,17 @@ Multimodal language translator allows users to translate text, speech, and image
    ```bash
    git clone https://github.com/Arshad-khan05/MiniProject.git
    ```
-3. Install the required dependencies.
+2. Install the required dependencies.
     ```bash
     pip install -r requirements.txt
     ```
-4. Run the Flask app:
+3. Run the Flask app:
 
     ```bash
     python app.py
 
     ```
-5. Open your browser and go to:
+4. Open your browser and go to:
 
     ```
     http://127.0.0.1:5000
